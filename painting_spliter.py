@@ -1,13 +1,13 @@
 
 # coding: utf-8
 
-# In[111]:
+# In[121]:
 
 
 class Reader:
     def __init__(self, input_file):
         file = open(input_file, "r");
-        lines = file.readlines();
+        lines = file.readlines()[1:];
         i = 0;
         new_text = '';
         for line in lines:
@@ -35,7 +35,8 @@ class Reader:
 # outfile.close()
 
 
-# In[112]:
+# In[122]:
+
 
 import argparse
 def main():
@@ -45,7 +46,9 @@ def main():
     args = parser.parse_args()
 
     read = Reader(args.input)
+    
 if __name__ == "__main__":
-    main()
+    main()	
+	
 # read = Reader("../10_computable_moments.txt")
 
