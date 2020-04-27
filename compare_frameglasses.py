@@ -3,7 +3,7 @@ fg1 = ['sea', 'blue', 'sky', 'water']
 fg2 = ['python', 'blue', 'sky']
 
 # Compare FrameGlasses
-def compare_paintings(fg1, fg2):
+def compare_frameglasses(fg1, fg2):
     # Number of tags common to fg1 and fg2
     intOfList = list(set(fg1) & set(fg2))
     len3 = len(intOfList)
@@ -26,4 +26,4 @@ def compare_paintings(fg1, fg2):
     print(min(tmpList))
 
 # To be removed later
-compare_paintings(fg1, fg2)
+compare_frameglasses(fg1, fg2)
