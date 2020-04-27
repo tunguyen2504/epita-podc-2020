@@ -1,5 +1,5 @@
 # Temporary file path
-filepath = "0_example.txt_reorder.txt"
+filepath = "simple_file.txt"
 
 # Dictionary Containing the frameglasses
 my_dict = {}
@@ -27,8 +27,8 @@ def compare_frameglasses(fg1, fg2):
     tmpList.sort()
 
     # Return the local satisfaction score
-    #return(min(tmpList))
-    print(min(tmpList))
+    return(min(tmpList))
+    #print(min(tmpList))
 
 
 
@@ -58,11 +58,14 @@ def read_file(filepath):
 
 # Iterate over dictionary of frameglasses to calculate scores
 def iterate_frameglasses():
-    for k1 in list(my_dict)[0:len(my_dict)]:
-        for k2 in list(my_dict)[1:len(my_dict)]:
+    i = 0
+    for k1 in my_dict:
+        i+=1
+        for k2 in list(my_dict)[i:len(my_dict)]:
             fg1 = my_dict[k1]
             fg2 = my_dict[k2]
-            compare_frameglasses(fg1,fg2)
+            scr1 = compare_frameglasses(fg1,fg2)
+            print(scr1)
 
 
 
