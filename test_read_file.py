@@ -7,7 +7,7 @@ sorted_dict = {}
 
 
 
-#################################
+#####################################
 # Compare FrameGlasses
 def compare_frameglasses(fg1, fg2):
     # Number of tags common to fg1 and fg2
@@ -30,8 +30,24 @@ def compare_frameglasses(fg1, fg2):
     # Return the local satisfaction score
     return(min(tmpList))
     #print(min(tmpList))
+#####################################
 
 
+#####################################
+# Write frameglasses into a text file
+def write_frameglasses():
+    # Number of frameglasses
+    frameglasses_count = str(len(sorted_dict))
+    f = open("output.txt", "w")
+    f.write(frameglasses_count)
+    f.write('\n')
+    
+    for key in sorted_dict:        
+        f.write(key)
+        f.write('\n')
+    f.close()
+
+#####################################
 
 
 # Read the sorted file of FrameGlasses
@@ -84,7 +100,7 @@ def iterate_frameglasses():
 
             # score between list 1 and each new list
             score_new = compare_frameglasses(fg1,fg_new)
-            print("Score between 1 and: " + str(i) + ": " + str(score_new))        
+            # print("Score between 1 and: " + str(i) + ": " + str(score_new))        
 
             # if this new score is less than the one we got at first, then we keep
             if score_new < score0:
@@ -93,32 +109,34 @@ def iterate_frameglasses():
                 k2 = k
                 fg2 = fg_new
             
-        print(" ")
-        print("----------------------")
-        print("Best Score is: " + str(score0))
-        print("Between: ")
-        print(fg1,fg2)
+        # print(" ")
+        # print("----------------------")
+        # print("Best Score is: " + str(score0))
+        # print("Between: ")
+        # print(fg1,fg2)
 
         sorted_dict[k2] = fg2 
         del my_dict[k1]
         del my_dict[k2]
 
-        print(" ")
-        print("----------------------")
-        print("Old List:")
-        print(my_dict)
+        # print(" ")
+        # print("----------------------")
+        # print("Old List:")
+        # print(my_dict)
 
-        print(" ")
-        print("----------------------")
-        print("New List:")
-        print(sorted_dict)
+        # print(" ")
+        # print("----------------------")
+        # print("New List:")
+        # print(sorted_dict)
+
+
+    # Write the new sorted dictionary into a text file
+    # Remove the tags, keep the IDs, and 
+    # Put the total number of lines at the begining of the text
+    write_frameglasses()
 
 
 # Read the sorted file of FrameGlasses
 read_file(filepath)
-
-
-
-
 
 
