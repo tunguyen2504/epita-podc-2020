@@ -24,10 +24,10 @@ class Reader:
                 landscape_list += line + '\n';
         full_list = landscape_list + portrait_list;
         print(full_list);
-        output_file = input_file + "_reorder.txt";
-        new_file = open(output_file, "w");
-        new_file.write(full_list);
-        new_file.close();
+#         output_file = input_file + "_reorder.txt";
+#         new_file = open(output_file, "w");
+#         new_file.write(full_list);
+#         new_file.close();
 #         print(landscape)
 #         print(outtext)
 # outfile = open("3_2000.txt","w")
@@ -40,15 +40,15 @@ class Reader:
 
 import argparse
 def main():
-    parser = argparse.ArgumentParser(description="Script to check the score")
-    parser.add_argument("input", type=str, help="The path to the input file")
+    parser = argparse.ArgumentParser()
+    parser.add_argument("input", type=str)
 
     args = parser.parse_args()
 
     read = Reader(args.input)
     
 if __name__ == "__main__":
-    main()	
-	
+    main()
+    
 # read = Reader("../10_computable_moments.txt")
 
