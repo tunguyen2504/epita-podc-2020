@@ -100,7 +100,7 @@ def iterate_frameglasses():
 
             # score between list 1 and each new list
             score_new = compare_frameglasses(fg1,fg_new)
-            # print("Score between 1 and: " + str(i) + ": " + str(score_new))        
+            #print("Score between 1 and: " + str(i) + ": " + str(score_new))        
 
             # if this new score is less than the one we got at first, then we keep
             if score_new < score0:
@@ -109,15 +109,22 @@ def iterate_frameglasses():
                 k2 = k
                 fg2 = fg_new
             
+            
         # print(" ")
         # print("----------------------")
         # print("Best Score is: " + str(score0))
         # print("Between: ")
         # print(fg1,fg2)
 
-        sorted_dict[k2] = fg2 
-        del my_dict[k1]
-        del my_dict[k2]
+
+        if len(my_dict) == 1:
+            sorted_dict[k1] = fg1
+            del my_dict[k1] 
+        else:
+            #print(my_dict)
+            sorted_dict[k2] = fg2 
+            del my_dict[k1]
+            del my_dict[k2]
 
         # print(" ")
         # print("----------------------")
