@@ -3,6 +3,7 @@ filepath = "simple_file.txt"
 
 # Dictionary Containing the frameglasses
 my_dict = {}
+sorted_dict = {}
 
 
 
@@ -56,18 +57,61 @@ def read_file(filepath):
 
 
 
+
 # Iterate over dictionary of frameglasses to calculate scores
 def iterate_frameglasses():
-    i = 0
-    for k1 in my_dict:
-        i+=1
-        for k2 in list(my_dict)[i:len(my_dict)]:
-            fg1 = my_dict[k1]
-            fg2 = my_dict[k2]
-            scr1 = compare_frameglasses(fg1,fg2)
-            print(scr1)
+    while len(my_dict) > 0:
+        i = 0
 
+        # First key in the dictionary    
+        k1 = list(my_dict)[0]
 
+        # Values/List related to the first key
+        fg1 = my_dict[k1]
+
+        # Add the first key/value into a new dictionary, as starting point
+        sorted_dict[k1] = fg1
+
+        # Itirate over the dictionary starting from the third element
+        i = 1
+        score0 = 10000
+        
+        for k in list(my_dict)[i:len(my_dict)]:
+            i+=1
+
+            # list/value related to each key in dictionary
+            fg_new = my_dict[k]
+
+            # score between list 1 and each new list
+            score_new = compare_frameglasses(fg1,fg_new)
+            print("Score between 1 and: " + str(i) + ": " + str(score_new))        
+
+            # if this new score is less than the one we got at first, then we keep
+            if score_new < score0:
+                score0 = score_new
+                # Memorize the new lists and keys
+                k2 = k
+                fg2 = fg_new
+            
+        print(" ")
+        print("----------------------")
+        print("Best Score is: " + str(score0))
+        print("Between: ")
+        print(fg1,fg2)
+
+        sorted_dict[k2] = fg2 
+        del my_dict[k1]
+        del my_dict[k2]
+
+        print(" ")
+        print("----------------------")
+        print("Old List:")
+        print(my_dict)
+
+        print(" ")
+        print("----------------------")
+        print("New List:")
+        print(sorted_dict)
 
 
 # Read the sorted file of FrameGlasses
